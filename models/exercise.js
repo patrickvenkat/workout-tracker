@@ -3,6 +3,9 @@ const Schema = mongoose.Schema;
 
 const ExerciseSchema = new Schema({
   // title: String,
+  typeofexercise:{
+    type: String
+},
   exercise:{
     type: String,
     unique: true

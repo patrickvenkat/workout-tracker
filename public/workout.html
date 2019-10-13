@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Workout Tracker</title>
+    <style>
+      input {
+        display: block;
+        height: 36px;
+        /* width: 350px; */
+        width: 400px;
+        font-size: 24px;
+        /* align-self: auto; */
+      }
+      /* textarea {
+        width: 300px;
+        height: 50px;
+      } */
+      /* h1, h2 {
+        text-align: center;
+      } */
+    </style>
+  </head>
+  <body>
+    <form action="/submitworkout" method="post">
+    <!-- <h1>Workout Plan</h1> -->
+    <h1>Create a workoutplan</h1>
+      <!-- <input type="text" name="title" placeholder="Title"> -->
+      <!-- <textarea type="text" name="body" placeholder="Enter an exercise here"></textarea> -->
+
+       <input type="text" name="nameofworkout" placeholder="Enter a name for your workout plan">
+       <br>
+       <br>
+      <h2>Pick an Exercise</h2>
+      <!-- <input type="text" name="nameofexercise" placeholder="Pick an exercise from the drop down"></textarea> -->      <div>
+        <select name="nameofexercise" size="4">
+              <option value="Inchworm">Inchworm</option>
+              <option value="Tuck jump">Tuck jump</option>
+              <option value="Bear crawl">Bear crawl/option>
+              <option value="Mountain climber">Mountain climber</option>
+        </select>
+      </div>
+      <br>
+      <br>
+      <br>
+      <h2>Pick some exercise chararteristics (Select one or more)</h2>
+      <div>
+        <select multiple name="exerciseproperty" size="4">
+          <option value="Duration">Duration</option>
+          <option value="Sets">Sets</option>
+          <option value="Repetitions">Repetitions</option>
+          <option value="Weight">Weight</option>
+        </select>
+      </div>
+
+      <!-- <h2>Name of Exercise (Running, Lifting etc</h2> -->
+      <!-- <input type="text" name="exercise" placeholder="Enter an exercise here"></textarea> -->
+
+      <br>
+      <br>
+      <input type="submit">
+      <!-- <a href="/exercises">See your Exercises!</a> -->
+      <!-- <a href="/workoutplan">See your Workout Plan!</a> -->
+      <!-- <a href="/populatedworkout">See your Workout plan, populated with exercises!</a> -->
+    </form>
+
+    <!-- <div id=listofexercises>
+      
+    </div> -->
+
+    <script>
+    // $("#submit").on("click", function(event) {
+    // event.preventDefault();
+    // console.log("entered after submit submit - workout selections");
+    // console.log("user ID value" + $("#userIDtext").val());
+  
+    // var userID1 = $("#userIDtext").val();
+  
+    // console.log("Ready to make the get request");
+    // console.log("IDs " + userID1);
+    //   $.get("/api/getUser/" + userID1, function(data) {
+    //     console.log("After the get request is complete");
+    //     userResultsArray = data;
+    //     console.log(userResultsArray);
+        // window.location.href = "./exercise.html";
+    //   });
+  // });
+
+    </script>
+  </body>
+</html>

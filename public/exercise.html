@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Workout Tracker</title>
+    <style>
+      input {
+        display: block;
+        height: 36px;
+        /* width: 350px; */
+        width: auto;
+        font-size: 24px;
+        /* align-self: auto; */
+      }
+      /* textarea {
+        width: 300px;
+        height: 50px;
+      } */
+      /* h1, h2 {
+        text-align: center;
+      } */
+    </style>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="../styles/styles.css"> -->
+  <link rel="shortcut icon" href="">  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- <script src="../js/login.js"></script> -->
+  </head>
+  <body>
+    <form action="/exercise" method="post">
+    <!-- <h1>Workout Plan</h1> -->
+    <h2>Enter a exercise</h2>
+      <!-- <input type="text" name="title" placeholder="Title"> -->
+      <!-- <textarea type="text" name="body" placeholder="Enter an exercise here"></textarea> -->
+      <h2>Type of Exercise (Full Body, Upper Body etc</h2>
+      <input type="text" name="typeofexercise" placeholder="Full Body or Upper Body etc"></textarea>
+
+
+      <h2>Name of Exercise (Running, Lifting etc</h2>
+      <input type="text" name="exercise" placeholder="Enter an exercise here"></textarea>
+
+      <input type="submit">
+      <!-- <a href="/exercises">See your Exercises!</a> -->
+      <!-- <a href="/workoutplan">See your Workout Plan!</a> -->
+      <!-- <a href="/populatedworkout">See your Workout plan, populated with exercises!</a> -->
+    </form>
+
+    <div id=listofexercises>
+      
+    </div>
+  </body>
+</html>
