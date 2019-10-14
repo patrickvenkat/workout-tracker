@@ -12,7 +12,7 @@ const WorkoutSchema = new Schema({
     // unique: true
   },
   exerciseproperty: {
-    type: String
+    type: Array
     // unique: true
   }
   // exercise: [

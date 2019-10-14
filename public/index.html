@@ -31,14 +31,20 @@
     <script>src="./JS/newworkoutplan.js"</script>
   </head>
   <body>
-    <form action="/exercise" method="post">
+    <!-- <form action="/exercise" method="post"> -->
+    <form>
     <!-- <h1>Workout Plan</h1> -->
     <h2>Welcome to managing your exercises, workoutplans and workout(s)</h2>
       <!-- <input type="text" name="title" placeholder="Title"> -->
       <!-- <textarea type="text" name="body" placeholder="Enter an exercise here"></textarea> -->
       <!-- <button type="button" onclick="alert('Add a new Exercise!')">Add a new exercise</button> -->
       <button type="button" id="newexercise">Add a new exercise</button>
+      <button type="button" id="showallexercises">Show all available exercises</button>
+      
+      <br>
+      <br>
       <button type="button" id="newworkoutplan">Add a new workoutplan</button>
+      <button type="button" id="showallworkouts">Show all available workout plans</button>
 
       <!-- <h2>Type of Exercise (Full Body, Upper Body etc</h2> -->
       <!-- <input type="text" name="typeofexercise" placeholder="Full Body or Upper Body etc"></textarea> -->
@@ -76,6 +82,26 @@ $("#newexercise").on("click", function(event) {
     //   });
   });
 
+
+  $("#showallexercises").on("click", function(event) {
+    event.preventDefault();
+    console.log("entered after submit inside index file");
+    // console.log("user ID value" + $("#userIDtext").val());
+  
+    // var userID1 = $("#userIDtext").val();
+  
+    // console.log("Ready to make the get request");
+    // console.log("IDs " + userID1);
+    //   $.get("/api/getUser/" + userID1, function(data) {
+    //     console.log("After the get request is complete");
+    //     userResultsArray = data;
+    //     console.log(userResultsArray);
+        window.location.href = "./exerciseall.html";
+    //   });
+  });
+
+
+
   $("#newworkoutplan").on("click", function(event) {
     event.preventDefault();
     console.log("entered after submit inside work out plan index file");
@@ -92,6 +118,26 @@ $("#newexercise").on("click", function(event) {
         window.location.href = "./workout.html";
     //   });
   });
+
+
+  $("#showallworkouts").on("click", function(event) {
+    event.preventDefault();
+    console.log("entered after submit inside index file");
+    // console.log("user ID value" + $("#userIDtext").val());
+  
+    // var userID1 = $("#userIDtext").val();
+  
+    // console.log("Ready to make the get request");
+    // console.log("IDs " + userID1);
+    //   $.get("/api/getUser/" + userID1, function(data) {
+    //     console.log("After the get request is complete");
+    //     userResultsArray = data;
+    //     console.log(userResultsArray);
+        window.location.href = "./workoutall.html";
+    //   });
+  });
+
+
 </script>
 
   </body>

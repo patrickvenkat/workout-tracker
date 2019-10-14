@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Workout Tracker</title>
+    <style>
+      /* input {
+        display: block;
+        height: 36px; */
+        /* width: 350px; */
+        /* width: 400px; */
+        /* font-size: 24px; */
+        /* align-self: auto; */
+      /* } */
+      /* textarea {
+        width: 300px;
+        height: 50px;
+      } */
+      /* h1, h2 {
+        text-align: center;
+      } */
+    </style>
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <!-- <link rel="stylesheet" href="../styles/styles.css"> -->
+      <link rel="shortcut icon" href="">  
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="../js/login.js"></script> -->
+  </head>
+  <body>
+    <h1>List of Exercises</h1>
+    <div>
+        <div id=exercise-name></div>
+    </div>  
+    
+    <script>
+        var exerciseResultsArray = [];
+        getListOfExercises();
+        function getListOfExercises() {
+            $.get("/api/exercisesall", function(data) {
+            exerciseResultsArray = data;
+            for (i = 0; i < exerciseResultsArray.length; i++) {
+                $("#exercise-name").append("<option> " + exerciseResultsArray[i].typeofexercise + " " + exerciseResultsArray[i].exercise + " </option>");
+            }
+            console.log("After the get exercise request is complete");
+            console.log(exerciseResultsArray);
+            });
+        }
+    </script>
+  </body>
+</html>

@@ -5,6 +5,18 @@ var db = require("../models");
 module.exports = function(app) {
 
 // Routes
+app.post("/addexercise", ({ body }, res) => {
+  console.log(body);
+  db.Exercise.create(body)
+    .then(dbExercise => {
+      console.log("Done");
+      res.redirect("../exerciseall.html");
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
 // db.WorkoutPlan.create({ name: "My First Workout" })
 //   .then(dbWorkoutPlan => {
 //     console.log(dbWorkoutPlan);
@@ -13,15 +25,15 @@ module.exports = function(app) {
 //     console.log(message);
 //   });
 
-app.get("/exercises", (req, res) => {
-    db.Exercise.find({})
-      .then(dbExercise => {
-        res.json(dbExercise);
-      })
-      .catch(err => {
-        res.json(err);
-      });
-  });
+// app.get("/exercises", (req, res) => {
+//     db.Exercise.find({})
+//       .then(dbExercise => {
+//         res.json(dbExercise);
+//       })
+//       .catch(err => {
+//         res.json(err);
+//       });
+//   });
   
   app.get("/workoutplan", (req, res) => {
     db.WorkoutPlan.find({})
@@ -33,17 +45,7 @@ app.get("/exercises", (req, res) => {
       });
   });
   
-  app.post("/exercise", ({ body }, res) => {
-    console.log(body);
-    db.Exercise.create(body)
-      .then(dbExercise => {
-        console.log("Done");
-        res.redirect("../displayAllExercises");
-      })
-      .catch(err => {
-        res.json(err);
-      });
-  });
+
 
   app.post("/submitworkout", ({ body }, res) => {
     console.log(body);
@@ -52,23 +54,43 @@ app.get("/exercises", (req, res) => {
     db.WorkoutPlan.create(body)
       .then(dbWorkoutPlan => {
         console.log("Done");
-        // res.redirect("../displayAllExercises");
+        res.redirect("../workoutall.html");
       })
       .catch(err => {
         res.json(err);
       });
   });
 
-  app.get("/displayAllExercises", (req, res) => {
-    console.log("Display All");
-    // db.Exercise.find({}, (error, data) => {
-    //   if (error) {
-    //       res.json(error);
-    //   } else {
-    //     res.json(data);
-    //   }
+
+    // Send the full list of skills up to the UI
+    // app.get("/api/getSkillsList", function(req, res) {
+    //   db.skills.findAll({}).then(function(results) {
+    //     return res.json(results);
+    //   });
     // });
+
+  app.get("/api/exercisesall", (req, res) => {
+    console.log("Display All");
+    db.Exercise.find({}, (error, data) => {
+      if (error) {
+          res.json(error);
+      } else {
+        return res.json(data);
+      }
+    });
   });
+
+  app.get("/api/workoutall", (req, res) => {
+    console.log("Display All");
+    db.WorkoutPlan.find({}, (error, data) => {
+      if (error) {
+          res.json(error);
+      } else {
+        return res.json(data);
+      }
+    });
+  });
+  
   
   // app.post("/submit", ({ body }, res) => {
   //   db.Exercise.create(body)

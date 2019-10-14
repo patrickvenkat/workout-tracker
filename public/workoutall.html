@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Workout Tracker</title>
+    <style>
+      /* input {
+        display: block;
+        height: 36px; */
+        /* width: 350px; */
+        /* width: 400px; */
+        /* font-size: 24px; */
+        /* align-self: auto; */
+      /* } */
+      /* textarea {
+        width: 300px;
+        height: 50px;
+      } */
+      /* h1, h2 {
+        text-align: center;
+      } */
+    </style>
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <!-- <link rel="stylesheet" href="../styles/styles.css"> -->
+      <link rel="shortcut icon" href="">  
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="../js/login.js"></script> -->
+  </head>
+  <body>
+    <h1>List of Workout Plans</h1>
+    <div>
+        <div id=workout-name></div>
+    </div>  
+    
+    <script>
+        var workoutResultsArray = [];
+        getListOfWorkouts();
+        function getListOfWorkouts() {
+            $.get("/api/workoutall", function(data) {
+            workoutResultsArray = data;
+            for (i = 0; i < workoutResultsArray.length; i++) {
+                $("#workout-name").append("<option> " + workoutResultsArray[i].nameofworkout + " " + workoutResultsArray[i].nameofexercise + " " + workoutResultsArray[i].exerciseproperty + " </option>");
+            }
+            console.log("After the get workout request is complete");
+            console.log(workoutResultsArray);
+            });
+        }
+    </script>
+  </body>
+</html>
