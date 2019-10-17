@@ -19,6 +19,21 @@
       /* h1, h2 {
         text-align: center;
       } */
+      table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
     </style>
        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -28,24 +43,51 @@
     <!-- <script src="../js/login.js"></script> -->
   </head>
   <body>
+
     <h1>List of Workout Plans</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th width="10%">Workout Plan</th>
+                <th width="10%">Exercises</th>
+                <!-- <th width="33%">ExerciseProperty</th> -->
+                <th width="30%" colspan="5">ExerciseProperty</th>
+            </tr>
+        </thead>
+            <tbody id="tableData"></tbody>
+    </table>
+
     <div>
         <div id=workout-name></div>
     </div>  
     
     <script>
-        var workoutResultsArray = [];
-        getListOfWorkouts();
-        function getListOfWorkouts() {
-            $.get("/api/workoutall", function(data) {
-            workoutResultsArray = data;
+      var workoutResultsArray = [];
+      getListOfWorkouts();
+      function getListOfWorkouts() {
+          $.get("/api/workoutall", function(data) {
+          workoutResultsArray = data;
+          for (i = 0; i < workoutResultsArray.length; i++) {
+            // $("#workout-name").append("<option> " + workoutResultsArray[i].nameofworkout + " " + workoutResultsArray[i].nameofexercise + " " + workoutResultsArray[i].exerciseproperty + " </option>");
+            var k = '<tbody>'
             for (i = 0; i < workoutResultsArray.length; i++) {
-                $("#workout-name").append("<option> " + workoutResultsArray[i].nameofworkout + " " + workoutResultsArray[i].nameofexercise + " " + workoutResultsArray[i].exerciseproperty + " </option>");
+              k+= '<tr>';
+              k+= '<td>' + workoutResultsArray[i].nameofworkout + '</td>';
+              k+= '<td>' + workoutResultsArray[i].nameofexercise + '</td>';
+              for(j=0; j < workoutResultsArray[i].exerciseproperty.length; j++){
+                k+= '<td>' + workoutResultsArray[i].exerciseproperty[j] + '</td>';  
+              }
+              // k+= '<td>' + workoutResultsArray[i].exerciseproperty + '</td>';
+              k+= '</tr>';
             }
-            console.log("After the get workout request is complete");
-            console.log(workoutResultsArray);
-            });
-        }
+            k+='</tbody>';
+            document.getElementById('tableData').innerHTML = k;
+          }
+          console.log("After the get workout request is complete");
+          console.log(workoutResultsArray);
+          });
+      }
     </script>
   </body>
 </html>
