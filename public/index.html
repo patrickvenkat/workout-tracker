@@ -56,7 +56,7 @@
         <p class="lead">Maintain Workout Plans </p>
         <p class="lead">
           <a class="btn btn-primary btn-lg" href="#" role="button" id="newworkoutplan">Add a new workoutplan</a>
-          <a class="btn btn-primary btn-lg" href="#" role="button" id="showallworkouts">Show all available workout plans</a>
+          <a class="btn btn-primary btn-lg" href="#" role="button" id="showallworkoutplans">Show all available workout plans</a>
         </p>
     </div>
     <!-- <form action="/exercise" method="post"> -->
@@ -72,7 +72,7 @@
       <!-- <br> -->
       <!-- <br> -->
       <!-- <button type="button" id="newworkoutplan">Add a new workoutplan</button> -->
-      <!-- <button type="button" id="showallworkouts">Show all available workout plans</button> -->
+      <!-- <button type="button" id="showallworkoutplans">Show all available workout plans</button> -->
 
       <!-- <h2>Type of Exercise (Full Body, Upper Body etc</h2> -->
       <!-- <input type="text" name="typeofexercise" placeholder="Full Body or Upper Body etc"></textarea> -->
@@ -93,9 +93,28 @@
 
 
 <script>
+
+$("#startaworkout").on("click", function(event) {
+    event.preventDefault();
+    // console.log("entered after submit inside index file");
+    // console.log("user ID value" + $("#userIDtext").val());
+  
+    // var userID1 = $("#userIDtext").val();
+  
+    // console.log("Ready to make the get request");
+    // console.log("IDs " + userID1);
+    //   $.get("/api/getUser/" + userID1, function(data) {
+    //     console.log("After the get request is complete");
+    //     userResultsArray = data;
+    //     console.log(userResultsArray);
+        window.location.href = "./workouts.html";
+    //   });
+  });
+
+
 $("#newexercise").on("click", function(event) {
     event.preventDefault();
-    console.log("entered after submit inside index file");
+    // console.log("entered after submit inside index file");
     // console.log("user ID value" + $("#userIDtext").val());
   
     // var userID1 = $("#userIDtext").val();
@@ -113,7 +132,7 @@ $("#newexercise").on("click", function(event) {
 
   $("#showallexercises").on("click", function(event) {
     event.preventDefault();
-    console.log("entered after submit inside index file");
+    // console.log("entered after submit inside index file");
     // console.log("user ID value" + $("#userIDtext").val());
   
     // var userID1 = $("#userIDtext").val();
@@ -132,7 +151,7 @@ $("#newexercise").on("click", function(event) {
 
   $("#newworkoutplan").on("click", function(event) {
     event.preventDefault();
-    console.log("entered after submit inside work out plan index file");
+    // console.log("entered after submit inside work out plan index file");
     // console.log("user ID value" + $("#userIDtext").val());
   
     // var userID1 = $("#userIDtext").val();
@@ -143,14 +162,14 @@ $("#newexercise").on("click", function(event) {
     //     console.log("After the get request is complete");
     //     userResultsArray = data;
     //     console.log(userResultsArray);
-        window.location.href = "./workout.html";
+        window.location.href = "./workoutplan.html";
     //   });
   });
 
 
-  $("#showallworkouts").on("click", function(event) {
+  $("#showallworkoutplans").on("click", function(event) {
     event.preventDefault();
-    console.log("entered after submit inside index file");
+    // console.log("entered after submit inside index file");
     // console.log("user ID value" + $("#userIDtext").val());
   
     // var userID1 = $("#userIDtext").val();
@@ -161,7 +180,7 @@ $("#newexercise").on("click", function(event) {
     //     console.log("After the get request is complete");
     //     userResultsArray = data;
     //     console.log(userResultsArray);
-        window.location.href = "./workoutall.html";
+        window.location.href = "./workoutplansall.html";
     //   });
   });
 

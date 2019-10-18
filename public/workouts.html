@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Workout Tracker</title>
+    <style>
+      /* input {
+        display: block;
+        height: 36px; */
+        /* width: 350px; */
+        /* width: 400px; */
+        /* font-size: 24px; */
+        /* align-self: auto; */
+      /* } */
+      /* textarea {
+        width: 300px;
+        height: 50px;
+      } */
+      /* h1, h2 {
+        text-align: center;
+      } */
+      table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+
+        /* tr:nth-child(even) {
+          background-color: #dddddd;
+        } */
+    </style>
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <!-- <link rel="stylesheet" href="../styles/styles.css"> -->
+      <!-- <link rel="shortcut icon" href="">   -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="../js/login.js"></script> -->
+  </head>
+  <body>
+
+    <h1>Select a work from available Workout Plans</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th width="10%">Workout Plan</th>
+                <th width="10%">Select a Plan</th>
+                <!-- <th width="10%">Exercises</th> -->
+                <!-- <th width="33%">ExerciseProperty</th> -->
+                <!-- <th width="30%" colspan="5">ExerciseProperty</th> -->
+            </tr>
+        </thead>
+            <tbody id="tableData"></tbody>
+    </table>
+
+    <div>
+        <div id=workout-name></div>
+    </div>  
+    
+    <script>
+      var workoutPlansArray = [];
+      getListOfWorkoutPlans();
+      function getListOfWorkoutPlans() {
+          $.get("/api/workoutplans", function(data) {
+          workoutPlansArray = data;
+          var k = '<tbody>'
+          for (i = 0; i < workoutPlansArray.length; i++) {
+            // $("#workout-name").append("<option> " + workoutResultsArray[i].nameofworkout + " " + workoutResultsArray[i].nameofexercise + " " + workoutResultsArray[i].exerciseproperty + " </option>");
+            // for (i = 0; i < workoutPlansArray.length; i++) {
+            k+= '<tr>';
+            k+= '<td>' + workoutPlansArray[i].nameofworkout + '</td>';
+            var buttonID = "workoutbutton" + i
+            k+= '<td>' + `<a class="btn btn-primary btn-lg" href="#" role="button" id="${buttonID}" onClick=buttonclick("${buttonID}")>Select</a>` + '</td>';
+            //   for(j=0; j < workoutResultsArray[i].exerciseproperty.length; j++){
+                // k+= '<td>' + workoutResultsArray[i].exerciseproperty[j] + '</td>';  
+            //   }
+              // k+= '<td>' + workoutResultsArray[i].exerciseproperty + '</td>';
+            k+= '</tr>';
+          }
+            k+='</tbody>';
+            console.log(k);
+            document.getElementById('tableData').innerHTML = k;
+   
+            var buttons = document.querySelectorAll('.btn');
+            console.log(buttons.length);
+            for (var k=0; k < buttons.length; k++) {
+              console.log(buttons[k].id);
+            }
+
+          })
+          console.log("After the get workout request1 is complete");
+        //   console.log(workoutPlansArray);
+          };
+
+    function buttonclick(btnID){
+        console.log(btnID);
+        // $("#"+(this.id)).on("click", function(event) {
+        // event.preventDefault();
+        // window.location.href = "./exerciseall.html";
+    //   });
+    }
+    </script>
+  </body>
+</html>

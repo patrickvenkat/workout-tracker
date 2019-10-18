@@ -35,7 +35,7 @@ app.post("/addexercise", ({ body }, res) => {
 //       });
 //   });
   
-  app.get("/workoutplan", (req, res) => {
+  app.get("/api/workoutplans", (req, res) => {
     db.WorkoutPlan.find({})
       .then(dbWorkoutPlan => {
         res.json(dbWorkoutPlan);
@@ -45,7 +45,7 @@ app.post("/addexercise", ({ body }, res) => {
       });
   });
   
-
+ 
 
   app.post("/submitworkout", ({ body }, res) => {
     console.log(body);

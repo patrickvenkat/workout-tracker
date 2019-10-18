@@ -31,9 +31,9 @@
           padding: 8px;
         }
 
-        tr:nth-child(even) {
+        /* tr:nth-child(even) {
           background-color: #dddddd;
-        }
+        } */
     </style>
        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -68,10 +68,10 @@
       function getListOfWorkouts() {
           $.get("/api/workoutall", function(data) {
           workoutResultsArray = data;
+          var k = '<tbody>'
           for (i = 0; i < workoutResultsArray.length; i++) {
             // $("#workout-name").append("<option> " + workoutResultsArray[i].nameofworkout + " " + workoutResultsArray[i].nameofexercise + " " + workoutResultsArray[i].exerciseproperty + " </option>");
-            var k = '<tbody>'
-            for (i = 0; i < workoutResultsArray.length; i++) {
+            // for (i = 0; i < workoutResultsArray.length; i++) {
               k+= '<tr>';
               k+= '<td>' + workoutResultsArray[i].nameofworkout + '</td>';
               k+= '<td>' + workoutResultsArray[i].nameofexercise + '</td>';
@@ -83,9 +83,8 @@
             }
             k+='</tbody>';
             document.getElementById('tableData').innerHTML = k;
-          }
-          console.log("After the get workout request is complete");
-          console.log(workoutResultsArray);
+            console.log("After the get workout request is complete");
+            console.log(workoutResultsArray);
           });
       }
     </script>
