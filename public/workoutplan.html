@@ -28,23 +28,13 @@
     <!-- <script src="../js/login.js"></script> -->
   </head>
   <body>
-    <form action="/submitworkout" method="post">
-    <!-- <h1>Workout Plan</h1> -->
+    <form action="/createworkoutplan" method="post">
     <h1>Create a workoutplan</h1>
-      <!-- <input type="text" name="title" placeholder="Title"> -->
-      <!-- <textarea type="text" name="body" placeholder="Enter an exercise here"></textarea> -->
-
        <input type="text" name="nameofworkout" placeholder="Enter a name for your workout plan">
        <br>
        <br>
       <h2>Pick an Exercise</h2>
-      <!-- <input type="text" name="nameofexercise" placeholder="Pick an exercise from the drop down"></textarea> -->      <div>
-        <select name="nameofexercise" size="4">
-              <option value="Inchworm">Inchworm</option>
-              <option value="Tuck jump">Tuck jump</option>
-              <option value="Bear crawl">Bear crawl</option>
-              <option value="Mountain climber">Mountain climber</option>
-        </select>
+        <select name="exercisename" id="nameofexercise" size="10"></select>
       </div>
       <br>
       <br>
@@ -59,39 +49,28 @@
         </select>
       </div>
 
-      <!-- <h2>Name of Exercise (Running, Lifting etc</h2> -->
-      <!-- <input type="text" name="exercise" placeholder="Enter an exercise here"></textarea> -->
-
       <br>
       <br>
       <input type="submit">
-      <!-- <a href="/exercises">See your Exercises!</a> -->
-      <!-- <a href="/workoutplan">See your Workout Plan!</a> -->
-      <!-- <a href="/populatedworkout">See your Workout plan, populated with exercises!</a> -->
     </form>
 
-    <!-- <div id=listofexercises>
-      
-    </div> -->
-
     <script>
-    // $("#submit").on("click", function(event) {
-    // event.preventDefault();
-    // console.log("entered after submit submit - workout selections");
-    // console.log("user ID value" + $("#userIDtext").val());
-  
-    // var userID1 = $("#userIDtext").val();
-  
-    // console.log("Ready to make the get request");
-    // console.log("IDs " + userID1);
-    //   $.get("/api/getUser/" + userID1, function(data) {
-    //     console.log("After the get request is complete");
-    //     userResultsArray = data;
-    //     console.log(userResultsArray);
-        // window.location.href = "./exercise.html";
-    //   });
-  // });
-
+        var exerciseResultsArray = [];
+        getListOfExercises();
+        function getListOfExercises() {
+          $.get("/api/exercisesall", function(data) {
+            exerciseResultsArray = data;
+            console.log(exerciseResultsArray);
+            const selectElement = document.getElementById("nameofexercise")
+            for (i = 0; i < exerciseResultsArray.length; i++) {
+              console.log("Inside for loop" + i);
+              const optionValue = document.createElement('option')
+              optionValue.textContent = exerciseResultsArray[i].exercise
+              optionValue.value = exerciseResultsArray[i].exercise
+              selectElement.appendChild(optionValue)
+            }
+          });
+        }
     </script>
   </body>
 </html>

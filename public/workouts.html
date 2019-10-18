@@ -51,60 +51,49 @@
             <tr>
                 <th width="10%">Workout Plan</th>
                 <th width="10%">Select a Plan</th>
-                <!-- <th width="10%">Exercises</th> -->
-                <!-- <th width="33%">ExerciseProperty</th> -->
-                <!-- <th width="30%" colspan="5">ExerciseProperty</th> -->
             </tr>
         </thead>
             <tbody id="tableData"></tbody>
     </table>
 
-    <div>
-        <div id=workout-name></div>
-    </div>  
-    
+    <br>
+    <a class="btn btn-primary btn-lg" href="#" role="button" id="newworkoutplan">Click here to add a new workoutplan</a>
     <script>
       var workoutPlansArray = [];
       getListOfWorkoutPlans();
       function getListOfWorkoutPlans() {
-          $.get("/api/workoutplans", function(data) {
+        $.get("/api/workoutplans", function(data) {
           workoutPlansArray = data;
           var k = '<tbody>'
           for (i = 0; i < workoutPlansArray.length; i++) {
-            // $("#workout-name").append("<option> " + workoutResultsArray[i].nameofworkout + " " + workoutResultsArray[i].nameofexercise + " " + workoutResultsArray[i].exerciseproperty + " </option>");
-            // for (i = 0; i < workoutPlansArray.length; i++) {
             k+= '<tr>';
             k+= '<td>' + workoutPlansArray[i].nameofworkout + '</td>';
             var buttonID = "workoutbutton" + i
-            k+= '<td>' + `<a class="btn btn-primary btn-lg" href="#" role="button" id="${buttonID}" onClick=buttonclick("${buttonID}")>Select</a>` + '</td>';
-            //   for(j=0; j < workoutResultsArray[i].exerciseproperty.length; j++){
-                // k+= '<td>' + workoutResultsArray[i].exerciseproperty[j] + '</td>';  
-            //   }
-              // k+= '<td>' + workoutResultsArray[i].exerciseproperty + '</td>';
+            k+= '<td>' + `<a class="btn btn-primary btn-lg" href="#" role="button" id="${buttonID}" onClick=buttonclick("${buttonID}")>Select this plan</a>` + '</td>';
             k+= '</tr>';
           }
-            k+='</tbody>';
-            console.log(k);
-            document.getElementById('tableData').innerHTML = k;
-   
-            var buttons = document.querySelectorAll('.btn');
-            console.log(buttons.length);
-            for (var k=0; k < buttons.length; k++) {
-              console.log(buttons[k].id);
-            }
+          k+='</tbody>';
+          console.log(k);
+          document.getElementById('tableData').innerHTML = k;
+  
+          var buttons = document.querySelectorAll('.btn');
+          console.log(buttons.length);
+          for (var k=0; k < buttons.length; k++) {
+            console.log(buttons[k].id);
+          }
+        })
+      };
 
-          })
-          console.log("After the get workout request1 is complete");
-        //   console.log(workoutPlansArray);
-          };
+      function buttonclick(btnID){
+          console.log(btnID);
+          window.location.href = "./logworkout.html";
+      }
 
-    function buttonclick(btnID){
-        console.log(btnID);
-        // $("#"+(this.id)).on("click", function(event) {
-        // event.preventDefault();
-        // window.location.href = "./exerciseall.html";
-    //   });
-    }
+      $("#newworkoutplan").on("click", function(event) {
+          event.preventDefault();
+          window.location.href = "./workoutplan.html";
+      });
+
     </script>
   </body>
 </html>

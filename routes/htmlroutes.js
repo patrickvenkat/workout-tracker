@@ -8,12 +8,8 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/index.html"));
   });
 
-  app.get("/workoutplan", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/exercise.html"));
-  });
-
   // Render 404 page for any unmatched routes
-  // app.get("*", function(req, res) {
-  //   res.render("error");
-  // });
+  app.get("*", function(req, res) {
+    res.render("error");
+  });
 };

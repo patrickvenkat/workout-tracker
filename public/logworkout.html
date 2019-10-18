@@ -44,42 +44,27 @@
   </head>
   <body>
 
-    <h1>Full List of Available Workout Plans</h1>
+    <h1>Log your workout here</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th width="10%">Workout Plan</th>
-                <th width="10%">Exercises</th>
-                <th width="30%" colspan="5">ExerciseProperty</th>
-            </tr>
-        </thead>
-            <tbody id="tableData"></tbody>
-    </table>
+    <form action="/addworkout" method="post">
+        <h2>Name of Exercise</h2>
+        <input type="text" name="nameofexercise" placeholder="Enter exercise here"></textarea>
 
-    <script>
-      var workoutResultsArray = [];
-      getListOfWorkouts();
-      function getListOfWorkouts() {
-          $.get("/api/workoutall", function(data) {
-          workoutResultsArray = data;
-          console.log(workoutResultsArray);
-          var k = '<tbody>'
-          for (i = 0; i < workoutResultsArray.length; i++) {
-              k+= '<tr>';
-              k+= '<td>' + workoutResultsArray[i].nameofworkout + '</td>';
-              k+= '<td>' + workoutResultsArray[i].exercisename + '</td>';
-              for(j=0; j < workoutResultsArray[i].exerciseproperty.length; j++){
-                k+= '<td>' + workoutResultsArray[i].exerciseproperty[j] + '</td>';  
-              }
-              k+= '</tr>';
-            }
-            k+='</tbody>';
-            document.getElementById('tableData').innerHTML = k;
-            console.log("After the get workout request is complete");
-            console.log(workoutResultsArray);
-          });
-      }
-    </script>
+        <h2>Weight</h2>
+        <input type="number" name="weightforexercise" placeholder="Enter weight here"></textarea>
+  
+        <h2>Sets</h2>
+        <input type="number" name="numberofsets" placeholder="Enter sets here"></textarea>
+
+        <h2>Repetitions</h2>
+        <input type="number" name="numberofrepetitions" placeholder="Enter repetitions here"></textarea>
+
+        <h2>Duration</h2>
+        <input type="number" name="durationofexercise" placeholder="Enter duration here"></textarea>
+  
+        <br>
+        <br>
+        <input type="submit">
+    </form>
   </body>
 </html>

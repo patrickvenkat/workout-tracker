@@ -7,7 +7,7 @@ const WorkoutSchema = new Schema({
     type: String
     // unique: true
   },
-  nameofexercise: {
+  exercisename: {
     type: String
     // unique: true
   },

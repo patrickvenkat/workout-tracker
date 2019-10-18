@@ -31,23 +31,16 @@
     <script>src="./JS/newworkoutplan.js"</script>
   </head>
   <body>
-
-      <div class="jumbotron">
-          <h1 class="display-4">Patrick's Workout Tracker!</h1>
-          <p class="lead">Click the button to select from one of your workout plans.</p>
-          <!-- <hr class="my-4"> -->
-          <!-- <p>You can also build custom workouts by picking your own exercises.</p> -->
-          <p class="lead">
-            <a class="btn btn-danger btn-lg btn-block" href="#" role="button" id="startaworkout">Start a Workout</a>
-          </p>
-      </div>
-
+    <div class="jumbotron">
+        <h1 class="display-4">Patrick's Workout Tracker!</h1>
+        <p class="lead">Click the button to select from one of your workout plans.</p>
+        <p class="lead">
+          <a class="btn btn-danger btn-lg btn-block" href="#" role="button" id="startaworkout">Start a Workout</a>
+        </p>
+    </div>
 
     <div class="jumbotron">
-        <!-- <h1 class="display-4">Patrick's Workout Tracker!</h1> -->
         <p class="lead">Maintain Exercises</p>
-        <!-- <hr class="my-4"> -->
-        <!-- <p>You can also build custom workouts by picking your own exercises.</p> -->
         <p class="lead">
           <a class="btn btn-primary btn-lg" href="#" role="button" id="newexercise">Add a new exercise</a>
           <a class="btn btn-primary btn-lg" href="#" role="button" id="showallexercises">Show all available exercises</a>
@@ -59,133 +52,33 @@
           <a class="btn btn-primary btn-lg" href="#" role="button" id="showallworkoutplans">Show all available workout plans</a>
         </p>
     </div>
-    <!-- <form action="/exercise" method="post"> -->
-    <!-- <form> -->
-    <!-- <h1>Workout Plan</h1> -->
-    <!-- <h2>Welcome to managing your exercises, workoutplans and workout(s)</h2> -->
-      <!-- <input type="text" name="title" placeholder="Title"> -->
-      <!-- <textarea type="text" name="body" placeholder="Enter an exercise here"></textarea> -->
-      <!-- <button type="button" onclick="alert('Add a new Exercise!')">Add a new exercise</button> -->
-      <!-- <button type="button" id="newexercise">Add a new exercise</button> -->
-      <!-- <button type="button" id="showallexercises">Show all available exercises</button> -->
-      
-      <!-- <br> -->
-      <!-- <br> -->
-      <!-- <button type="button" id="newworkoutplan">Add a new workoutplan</button> -->
-      <!-- <button type="button" id="showallworkoutplans">Show all available workout plans</button> -->
-
-      <!-- <h2>Type of Exercise (Full Body, Upper Body etc</h2> -->
-      <!-- <input type="text" name="typeofexercise" placeholder="Full Body or Upper Body etc"></textarea> -->
-
-
-      <!-- <h2>Name of Exercise (Running, Lifting etc</h2> -->
-      <!-- <input type="text" name="exercise" placeholder="Enter an exercise here"></textarea> -->
-
-      <!-- <input type="submit"> -->
-      <!-- <a href="/exercises">See your Exercises!</a> -->
-      <!-- <a href="/workoutplan">See your Workout Plan!</a> -->
-      <!-- <a href="/populatedworkout">See your Workout plan, populated with exercises!</a> -->
-    <!-- </form> -->
-
-    <!-- <div id=listofexercises>
-      
-    </div> -->
-
 
 <script>
+    $("#startaworkout").on("click", function(event) {
+        event.preventDefault();
+            window.location.href = "./workouts.html";
+      });
 
-$("#startaworkout").on("click", function(event) {
-    event.preventDefault();
-    // console.log("entered after submit inside index file");
-    // console.log("user ID value" + $("#userIDtext").val());
-  
-    // var userID1 = $("#userIDtext").val();
-  
-    // console.log("Ready to make the get request");
-    // console.log("IDs " + userID1);
-    //   $.get("/api/getUser/" + userID1, function(data) {
-    //     console.log("After the get request is complete");
-    //     userResultsArray = data;
-    //     console.log(userResultsArray);
-        window.location.href = "./workouts.html";
-    //   });
-  });
+    $("#newexercise").on("click", function(event) {
+        event.preventDefault();
+            window.location.href = "./exercise.html";
+      });
 
+      $("#showallexercises").on("click", function(event) {
+        event.preventDefault();
+            window.location.href = "./exerciseall.html";
+      });
 
-$("#newexercise").on("click", function(event) {
-    event.preventDefault();
-    // console.log("entered after submit inside index file");
-    // console.log("user ID value" + $("#userIDtext").val());
-  
-    // var userID1 = $("#userIDtext").val();
-  
-    // console.log("Ready to make the get request");
-    // console.log("IDs " + userID1);
-    //   $.get("/api/getUser/" + userID1, function(data) {
-    //     console.log("After the get request is complete");
-    //     userResultsArray = data;
-    //     console.log(userResultsArray);
-        window.location.href = "./exercise.html";
-    //   });
-  });
+      $("#newworkoutplan").on("click", function(event) {
+        event.preventDefault();
+            window.location.href = "./workoutplan.html";
+      });
 
-
-  $("#showallexercises").on("click", function(event) {
-    event.preventDefault();
-    // console.log("entered after submit inside index file");
-    // console.log("user ID value" + $("#userIDtext").val());
-  
-    // var userID1 = $("#userIDtext").val();
-  
-    // console.log("Ready to make the get request");
-    // console.log("IDs " + userID1);
-    //   $.get("/api/getUser/" + userID1, function(data) {
-    //     console.log("After the get request is complete");
-    //     userResultsArray = data;
-    //     console.log(userResultsArray);
-        window.location.href = "./exerciseall.html";
-    //   });
-  });
-
-
-
-  $("#newworkoutplan").on("click", function(event) {
-    event.preventDefault();
-    // console.log("entered after submit inside work out plan index file");
-    // console.log("user ID value" + $("#userIDtext").val());
-  
-    // var userID1 = $("#userIDtext").val();
-  
-    // console.log("Ready to make the get request");
-    // console.log("IDs " + userID1);
-    //   $.get("/api/getUser/" + userID1, function(data) {
-    //     console.log("After the get request is complete");
-    //     userResultsArray = data;
-    //     console.log(userResultsArray);
-        window.location.href = "./workoutplan.html";
-    //   });
-  });
-
-
-  $("#showallworkoutplans").on("click", function(event) {
-    event.preventDefault();
-    // console.log("entered after submit inside index file");
-    // console.log("user ID value" + $("#userIDtext").val());
-  
-    // var userID1 = $("#userIDtext").val();
-  
-    // console.log("Ready to make the get request");
-    // console.log("IDs " + userID1);
-    //   $.get("/api/getUser/" + userID1, function(data) {
-    //     console.log("After the get request is complete");
-    //     userResultsArray = data;
-    //     console.log(userResultsArray);
-        window.location.href = "./workoutplansall.html";
-    //   });
-  });
-
-
+      $("#showallworkoutplans").on("click", function(event) {
+        event.preventDefault();
+            window.location.href = "./workoutplansall.html";
+      });
 </script>
 
-  </body>
+</body>
 </html>
