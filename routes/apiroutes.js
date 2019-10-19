@@ -31,6 +31,7 @@ app.post("/addworkout", ({ body }, res) => {
   
   app.get("/api/workoutplans", (req, res) => {
     db.WorkoutPlan.find({})
+    // db.WorkoutPlan.distinct("nameofworkout")
       .then(dbWorkoutPlan => {
         res.json(dbWorkoutPlan);
       })
